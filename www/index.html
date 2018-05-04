@@ -3,7 +3,9 @@
     <meta charset="utf-8" />
   </head>
   <body>
-    <canvas id="temperature" height="32" />
+    <canvas id="temperature" height="32"></canvas>
+    <br />
+    <canvas id="elevation" height="32"></canvas>
 
     <script src="js/Chart.HeatMap.S.js"></script>
     <script>
@@ -33,6 +35,10 @@ function createChart(element_id, data, options) {
 var temperatureData = formatData([68, 66, 59, 72, 77, 80, 82, 83, 76]);
 var temperatureOptions = formatOptions(["#40ff40", "#ffff40", "#ff4040"]);
 createChart('temperature', temperatureData, temperatureOptions);
+
+var elevationData = formatData([400, 200, 300, 1000, 1200, 2400, 2000, 800, 200]);
+var elevationOptions = formatOptions(["#d0d0ff", "#0000ff"]);
+createChart('elevation', elevationData, elevationOptions);
     </script>
   </body>
 </html>
