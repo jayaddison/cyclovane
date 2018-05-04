@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
   </head>
   <body>
-    <canvas id="temperature" height="64" />
+    <canvas id="temperature" height="32" />
 
     <script src="js/Chart.HeatMap.S.js"></script>
     <script>
@@ -20,7 +20,8 @@ function formatOptions(colors) {
         showLabels: false,
         tooltipTemplate: '<%= value %>',
         rounded: false,
-        paddingScale: 0
+        paddingScale: 0,
+        scaleFontSize: 0
     };
 }
 
