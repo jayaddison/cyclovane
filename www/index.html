@@ -3,9 +3,33 @@
     <meta charset="utf-8" />
   </head>
   <body>
-    <canvas id="temperature" height="32"></canvas>
-    <br />
-    <canvas id="elevation" height="32"></canvas>
+    <style>
+       div.table {
+           display: table;
+       }
+
+       div.table div.table-row {
+           display: table-row;
+       }
+
+       div.table div.table-cell {
+           display: table-cell;
+           font-size: 11;
+           font-family: sans-serif;
+           vertical-align: middle;
+           text-align: right;
+       }
+    </style>
+    <div class="table">
+    <div class="table-row">
+      <div class="table-cell">Temperature</div>
+      <div class="table-cell"><canvas id="temperature" height="32"></canvas></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Elevation</div>
+      <div class="table-cell"><canvas id="elevation" height="32"></canvas></div>
+    </div>
+    </div>
 
     <script src="js/Chart.HeatMap.S.js"></script>
     <script>
