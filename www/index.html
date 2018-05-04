@@ -22,6 +22,10 @@
     </style>
     <div class="table">
     <div class="table-row">
+      <div class="table-cell"></div>
+      <div class="table-cell"><canvas id="labels" height="100"></canvas></div>
+    </div>
+    <div class="table-row">
       <div class="table-cell">Temperature</div>
       <div class="table-cell"><canvas id="temperature" height="32"></canvas></div>
     </div>
@@ -47,6 +51,8 @@ function formatOptions(colors) {
         tooltipTemplate: '<%= value %>',
         rounded: false,
         paddingScale: 0,
+        tooltipCaretSize: 0,
+        tooltipFillColor: 'rgba(0,0,0,0.6)',
         scaleFontSize: 0
     };
 }
@@ -55,6 +61,13 @@ function createChart(element_id, data, options) {
     var elem = document.getElementById(element_id).getContext('2d');
     return new Chart(elem).HeatMap(data, options);
 }
+
+var labelData = formatData([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+labelData.labels = ['2018-05-14', '2018-05-15', '2018-05-16', '2018-05-17', '2018-05-18', '2018-05-19', '2018-05-20', '2018-05-21', '2018-05-22'];
+var labelOptions = formatOptions(["#ffffff"]);
+labelOptions.scaleFontSize = 11;
+labelOptions.showTooltips = false;
+createChart('labels', labelData, labelOptions);
 
 var temperatureData = formatData([68, 66, 59, 72, 77, 80, 82, 83, 76]);
 var temperatureOptions = formatOptions(["#40ff40", "#ffff40", "#ff4040"]);

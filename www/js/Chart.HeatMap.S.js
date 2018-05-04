@@ -1541,33 +1541,15 @@
 			this.xScalePaddingRight = lastWidth/2 + 3;
 			this.xScalePaddingLeft = (firstWidth/2 > this.yLabelWidth + 10) ? firstWidth/2 : this.yLabelWidth + 10;
 
-			this.xLabelRotation = 0;
+			this.xLabelRotation = 90;
+			this.xScalePaddingLeft = 12;
+			this.xScalePaddingRight = 12;
+
 			if (this.display){
 				var originalLabelWidth = longestText(this.ctx,this.font,this.xLabels),
 					cosRotation,
 					firstRotatedWidth;
 				this.xLabelWidth = originalLabelWidth;
-				//Allow 3 pixels x2 padding either side for label readability
-				var xGridWidth = Math.floor(this.calculateX(1) - this.calculateX(0)) - 6;
-
-				//Max label rotate should be 90 - also act as a loop counter
-				while ((this.xLabelWidth > xGridWidth && this.xLabelRotation === 0) || (this.xLabelWidth > xGridWidth && this.xLabelRotation <= 90 && this.xLabelRotation > 0)){
-					cosRotation = Math.cos(toRadians(this.xLabelRotation));
-
-					firstRotated = cosRotation * firstWidth;
-					lastRotated = cosRotation * lastWidth;
-
-					// We're right aligning the text now.
-					if (firstRotated + this.fontSize / 2 > this.yLabelWidth + 8){
-						this.xScalePaddingLeft = firstRotated + this.fontSize / 2;
-					}
-					this.xScalePaddingRight = this.fontSize/2;
-
-
-					this.xLabelRotation++;
-					this.xLabelWidth = cosRotation * originalLabelWidth;
-
-				}
 				if (this.xLabelRotation > 0){
 					this.endPoint -= Math.sin(toRadians(this.xLabelRotation))*originalLabelWidth + 3;
 				}
@@ -2832,7 +2814,7 @@ var ColorManager = function(){
 
         new Chart.Tooltip({
           x: Math.round(tooltipPosition.x),
-          y: Math.round(tooltipPosition.y+20),
+          y: Math.round(tooltipPosition.y),
           xPadding: this.options.tooltipXPadding,
           yPadding: this.options.tooltipYPadding,
           fillColor: this.options.tooltipFillColor,
