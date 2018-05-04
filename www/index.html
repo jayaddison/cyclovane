@@ -9,7 +9,7 @@
     <script>
 function formatData(data) {
     return {
-        labels: ['', '', '', '', '', '', '', '', ''],
+        labels: data.map(function(d) { return ''; }),
         datasets: [{label: '', data: data}]
     };
 }
