@@ -3,11 +3,11 @@
     <meta charset="utf-8" />
   </head>
   <body>
-    <canvas id="temperatures" height="64" />
+    <canvas id="temperature" height="64" />
 
     <script src="js/Chart.HeatMap.S.js"></script>
     <script>
-var temperaturesData = {
+var temperatureData = {
   labels: ['', '', '', '', '', '', '', '', ''],
   datasets: [
     {
@@ -16,7 +16,7 @@ var temperaturesData = {
     }
   ]
 };
-var temperaturesOptions = {
+var temperatureOptions = {
     colors: ["#40ff40", "#ffff40", "#ff4040"],
     showLabels: false,
     tooltipTemplate: '<%= value %>',
@@ -24,8 +24,8 @@ var temperaturesOptions = {
     paddingScale: 0
 };
 
-var temperaturesElem = document.getElementById('temperatures').getContext('2d');
-var temperaturesChart = new Chart(temperaturesElem).HeatMap(temperaturesData, temperaturesOptions);
+var temperatureElem = document.getElementById('temperature').getContext('2d');
+var temperatureChart = new Chart(temperatureElem).HeatMap(temperatureData, temperatureOptions);
     </script>
   </body>
 </html>
