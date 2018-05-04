@@ -7,25 +7,31 @@
 
     <script src="js/Chart.HeatMap.S.js"></script>
     <script>
-var temperatureData = {
-  labels: ['', '', '', '', '', '', '', '', ''],
-  datasets: [
-    {
-      label: '',
-      data: [68, 66, 59, 72, 77, 80, 82, 83, 76]
-    }
-  ]
-};
-var temperatureOptions = {
-    colors: ["#40ff40", "#ffff40", "#ff4040"],
-    showLabels: false,
-    tooltipTemplate: '<%= value %>',
-    rounded: false,
-    paddingScale: 0
-};
+function formatData(data) {
+    return {
+        labels: ['', '', '', '', '', '', '', '', ''],
+        datasets: [{label: '', data: data}]
+    };
+}
 
-var temperatureElem = document.getElementById('temperature').getContext('2d');
-var temperatureChart = new Chart(temperatureElem).HeatMap(temperatureData, temperatureOptions);
+function formatOptions(colors) {
+    return {
+        colors: colors,
+        showLabels: false,
+        tooltipTemplate: '<%= value %>',
+        rounded: false,
+        paddingScale: 0
+    };
+}
+
+function createChart(element_id, data, options) {
+    var elem = document.getElementById(element_id).getContext('2d');
+    return new Chart(elem).HeatMap(data, options);
+}
+
+var temperatureData = formatData([68, 66, 59, 72, 77, 80, 82, 83, 76]);
+var temperatureOptions = formatOptions(["#40ff40", "#ffff40", "#ff4040"]);
+createChart('temperature', temperatureData, temperatureOptions);
     </script>
   </body>
 </html>
