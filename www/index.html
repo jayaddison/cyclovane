@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <canvas id="temperatures" height="64" />
+
+    <script src="js/Chart.HeatMap.S.js"></script>
+    <script>
+var temperaturesData = {
+  labels: ['', '', '', '', '', '', '', '', ''],
+  datasets: [
+    {
+      label: '',
+      data: [68, 66, 59, 72, 77, 80, 82, 83, 76]
+    }
+  ]
+};
+var temperaturesOptions = {
+    colors: ["#40ff40", "#ffff40", "#ff4040"],
+    showLabels: false,
+    tooltipTemplate: '<%= value %>',
+    rounded: false,
+    paddingScale: 0
+};
+
+var temperaturesElem = document.getElementById('temperatures').getContext('2d');
+var temperaturesChart = new Chart(temperaturesElem).HeatMap(temperaturesData, temperaturesOptions);
+    </script>
+  </body>
+</html>
